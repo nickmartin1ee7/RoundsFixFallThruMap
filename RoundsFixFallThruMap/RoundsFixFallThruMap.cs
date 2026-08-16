@@ -15,7 +15,7 @@ namespace RoundsFixFallThruMap
     [BepInProcess("Rounds.exe")]
     public class RoundsFixFallThruMap : BaseUnityPlugin
     {
-        private const string ModId = "com.github.nicks.roundsfixfallthrumap";
+        private const string ModId = "com.github.nickmartin1ee7.roundsfixfallthrumap";
         private const string ModName = "Rounds Fix Fall Thru Map";
         private const string Version = "1.0.0";
 
