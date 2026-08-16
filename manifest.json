@@ -1,10 +1,7 @@
 {
-  "Name": "RoundsFixFallThruMap",
-  "Version": "0.1.0",
-  "Author": "nick",
-  "Description": "Fixes client fall-through of maps by re-enabling maps the host has enabled when joining a friend's game.",
-  "Repository": "https://github.com/nickmartin1ee7/RoundsWithFriends",
-  "Icon": "mod_icon.png",
-  "Tags": ["rounds","unboundlib","bepinex","maps","fix"],
-  "UniqueId": "com.nick.roundsfixfallthrumap"
+  "name": "RoundsFixFallThruMap",
+  "version_number": "0.1.0",
+  "website_url": "https://github.com/nickmartin1ee7/RoundsFixFallThruMap",
+  "description": "Fixes client fall-through of maps by re-enabling maps the host has enabled when joining a friend's game.",
+  "dependencies": []
 }
