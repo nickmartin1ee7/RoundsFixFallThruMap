@@ -31,11 +31,11 @@ jobs:
           set -euo pipefail
           test -n "$ZIP_PASSWORD" || { echo "ROUNDS_ARCHIVE_PASSWORD is not configured." >&2; exit 1; }
 
-          mapfile -t parts < <(find ROUNDS -maxdepth 1 -type f -name '*.zip.*' -print | sort)
+          mapfile -t parts < <(find ROUNDS -maxdepth 1 -type f -name '*.7z.*' -print | sort)
           ((${#parts[@]})) || { echo "No encrypted ROUNDS archive parts found under ROUNDS/." >&2; exit 1; }
 
-          cat "${parts[@]}" > ROUNDS/ROUNDS.zip
-          7z x -y -p"$ZIP_PASSWORD" -ounpacked ROUNDS/ROUNDS.zip
+          cat "${parts[@]}" > ROUNDS/ROUNDS.7z
+          7z x -y -p"$ZIP_PASSWORD" -ounpacked ROUNDS/ROUNDS.7z
 
           rounds_exe=$(find unpacked -type f -iname 'Rounds.exe' -print -quit)
           test -n "$rounds_exe" || { echo "The restored archive does not contain Rounds.exe." >&2; exit 1; }

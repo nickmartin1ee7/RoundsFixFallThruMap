@@ -19,3 +19,9 @@
 
 - `tools/install-local.sh --plugins /path/to/BepInEx/plugins` — copies the pre-built Release DLL (`RoundsFixFallThruMap/bin/Release/netstandard2.1/RoundsFixFallThruMap.dll`) into a local BepInEx plugins directory. Requires `./tools/build-release.sh` to have been run first.
 - `tools/uninstall-local.sh --plugins /path/to/BepInEx/plugins` — removes the DLL from a local BepInEx plugins directory.
+
+## CI Release Pipeline
+
+- Pushing a `v*` tag triggers `.github/workflows/release.yml`, which restores the encrypted ROUNDS build dependencies from `ROUNDS/ROUNDS.7z.*`, builds a distributable archive, and publishes it as a GitHub Release.
+- The encrypted archive requires the `ROUNDS_ARCHIVE_PASSWORD` Actions secret. Update the parts with: `7z a -t7z -mhe=on -p"$ROUNDS_ARCHIVE_PASSWORD" -v10240k ROUNDS.7z *` (from the unpacked tree) and commit the resulting `ROUNDS/ROUNDS.7z.*` parts. Keep the same password, or update the secret in lockstep.
+- Secrets and the archive must stay in sync — never change one without the other.
