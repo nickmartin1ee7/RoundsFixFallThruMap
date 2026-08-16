@@ -55,7 +55,7 @@ jobs:
 
           rounds_exe=$(find unpacked -type f -iname 'Rounds.exe' -print -quit)
           test -n "$rounds_exe" || { echo "The restored archive does not contain Rounds.exe." >&2; exit 1; }
-          echo "ROUNDS_FOLDER=$(dirname "$rounds_exe")" >> "$GITHUB_ENV"
+          echo "ROUNDS_FOLDER=$(realpath "$(dirname "$rounds_exe")")" >> "$GITHUB_ENV"
 
       - name: Align package versions with the computed release version
         run: |
