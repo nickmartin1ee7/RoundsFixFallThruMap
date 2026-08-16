@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using BepInEx;
 using HarmonyLib;
 using Photon.Pun;
@@ -24,7 +26,7 @@ namespace RoundsFixFallThruMap
         }
     }
 
-    [HarmonyPatch(typeof(LevelManager), nameof(LevelManager.RPC_HostMapHandshakeResponse))]
+    [HarmonyPatch(typeof(LevelManager), "RPC_HostMapHandshakeResponse")]
     internal static class MapSyncPatch
     {
         [HarmonyPostfix]
@@ -59,8 +61,20 @@ namespace RoundsFixFallThruMap
 
             if (MapManager.instance != null)
             {
-                MapManager.instance.levels = LevelManager.activeLevels.ToArray();
+                MapManager.instance.levels = GetActiveLevels().ToArray();
             }
+        }
+
+        private static ICollection<string> GetActiveLevels()
+        {
+            var field = typeof(LevelManager).GetField("activeLevels", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+            if (field == null)
+            {
+                return Array.Empty<string>();
+            }
+
+            var value = field.GetValue(null);
+            return value as ICollection<string> ?? Array.Empty<string>();
         }
     }
 }
