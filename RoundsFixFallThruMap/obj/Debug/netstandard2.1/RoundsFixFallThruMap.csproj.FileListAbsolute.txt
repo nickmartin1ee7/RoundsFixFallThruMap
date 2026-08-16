@@ -1,0 +1,7 @@
+/home/nick/source/repos/RoundsFixFallThruMap/RoundsFixFallThruMap/obj/Debug/netstandard2.1/RoundsFixFallThruMap.GeneratedMSBuildEditorConfig.editorconfig
+/home/nick/source/repos/RoundsFixFallThruMap/RoundsFixFallThruMap/obj/Debug/netstandard2.1/RoundsFixFallThruMap.csproj.CoreCompileInputs.cache
+/home/nick/source/repos/RoundsFixFallThruMap/RoundsFixFallThruMap/bin/Debug/netstandard2.1/RoundsFixFallThruMap.deps.json
+/home/nick/source/repos/RoundsFixFallThruMap/RoundsFixFallThruMap/bin/Debug/netstandard2.1/RoundsFixFallThruMap.dll
+/home/nick/source/repos/RoundsFixFallThruMap/RoundsFixFallThruMap/bin/Debug/netstandard2.1/RoundsFixFallThruMap.pdb
+/home/nick/source/repos/RoundsFixFallThruMap/RoundsFixFallThruMap/obj/Debug/netstandard2.1/RoundsFixFallThruMap.dll
+/home/nick/source/repos/RoundsFixFallThruMap/RoundsFixFallThruMap/obj/Debug/netstandard2.1/RoundsFixFallThruMap.pdb

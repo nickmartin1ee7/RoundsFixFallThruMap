@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>RoundsFixFallThruMap</RootNamespace>
+    <AssemblyName>RoundsFixFallThruMap</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+
+    <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('C:/Program Files (x86)/Steam/steamapps/common/ROUNDS')">C:/Program Files (x86)/Steam/steamapps/common/ROUNDS</RoundsFolder>
+    <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('C:/Program Files/Steam/steamapps/common/ROUNDS')">C:/Program Files/Steam/steamapps/common/ROUNDS</RoundsFolder>
+    <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('/mnt/c/Program Files (x86)/Steam/steamapps/common/ROUNDS')">/mnt/c/Program Files (x86)/Steam/steamapps/common/ROUNDS</RoundsFolder>
+    <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('/mnt/c/Program Files/Steam/steamapps/common/ROUNDS')">/mnt/c/Program Files/Steam/steamapps/common/ROUNDS</RoundsFolder>
+  </PropertyGroup>
+
+  <ItemGroup Condition="Exists('$(RoundsFolder)/BepInEx/core/BepInEx.dll')">
+    <Reference Include="BepInEx">
+      <HintPath>$(RoundsFolder)/BepInEx/core/BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(RoundsFolder)/BepInEx/core/0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(RoundsFolder)/ROUNDS_Data/Managed/Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>$(RoundsFolder)/ROUNDS_Data/Managed/Photon3Unity3D.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(RoundsFolder)/ROUNDS_Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(RoundsFolder)/ROUNDS_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(RoundsFolder)/ROUNDS_Data/Managed/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnboundLib">
+      <HintPath>$(RoundsFolder)/BepInEx/plugins/UnboundLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="RoundsFixFallThruMap.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!Exists('$(RoundsFolder)/BepInEx/core/BepInEx.dll')">
+    <Compile Include="Stubs.cs" />
+  </ItemGroup>
+</Project>
