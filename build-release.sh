@@ -103,7 +103,7 @@ if [[ -f "$REPO_ROOT/icon.png" ]]; then
 fi
 
 pushd "$TMP_DIR" >/dev/null
-nix-shell -p zip --command 'zip -r "$ARTIFACTS_DIR/$OUT_NAME" . >/dev/null'
+zip -r "$ARTIFACTS_DIR/$OUT_NAME" . >/dev/null
 popd >/dev/null
 rm -rf "$TMP_DIR"
 
