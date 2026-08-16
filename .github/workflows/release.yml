@@ -5,6 +5,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      version:
+        description: "Optional override for the release version (e.g. 1.1.0). Defaults to MAJOR.MINOR.run-number."
+        required: false
+        default: ""
 
 env:
   # Bump MAJOR/MINOR here for a new minor release.
@@ -24,9 +29,19 @@ jobs:
         with:
           fetch-depth: "0"
 
-      - name: Compute version from run number
+      - name: Compute release version
+        env:
+          VERSION_OVERRIDE: ${{ inputs.version }}
         run: |
-          VERSION="${MAJOR}.${MINOR}.${GITHUB_RUN_NUMBER}"
+          if [[ -n "$VERSION_OVERRIDE" ]]; then
+            VERSION="$VERSION_OVERRIDE"
+          else
+            VERSION="${MAJOR}.${MINOR}.${GITHUB_RUN_NUMBER}"
+          fi
+          [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || {
+            echo "Release version must use MAJOR.MINOR.PATCH format." >&2
+            exit 1
+          }
           TAG="v${VERSION}"
           echo "VERSION=$VERSION" >> "$GITHUB_ENV"
           echo "TAG=$TAG" >> "$GITHUB_ENV"
