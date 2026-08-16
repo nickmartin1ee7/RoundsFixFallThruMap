@@ -2,7 +2,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SOURCE_DLL="$SCRIPT_DIR/RoundsFixFallThruMap/bin/Release/netstandard2.1/RoundsFixFallThruMap.dll"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+SOURCE_DLL="$REPO_ROOT/RoundsFixFallThruMap/bin/Release/netstandard2.1/RoundsFixFallThruMap.dll"
 PLUGIN_NAME="RoundsFixFallThruMap.dll"
 
 usage() {

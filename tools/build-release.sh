@@ -4,12 +4,12 @@ set -euo pipefail
 # build-release.sh
 # Build a Release DLL for RoundsFixFallThruMap and produce a zip for deployment.
 # Usage:
-#   ./build-release.sh --rounds /path/to/ROUNDS      # build against real install
-#   ./build-release.sh --stubs                      # build using local stubs (dev only)
-#   ./build-release.sh                              # tries to auto-detect common install paths
+#   ./tools/build-release.sh --rounds /path/to/ROUNDS # build against real install
+#   ./tools/build-release.sh --stubs                  # build using local stubs (dev only)
+#   ./tools/build-release.sh                          # tries to auto-detect common install paths
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$SCRIPT_DIR"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 PROJECT_SLN="$REPO_ROOT/RoundsFixFallThruMap.slnx"
 PROJECT_DLL_REL="RoundsFixFallThruMap/bin/Release/netstandard2.1/RoundsFixFallThruMap.dll"
 ARTIFACTS_DIR="$REPO_ROOT/artifacts"
