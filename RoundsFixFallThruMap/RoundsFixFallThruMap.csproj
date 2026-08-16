@@ -10,8 +10,11 @@
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <AllowLocalStubs Condition="'$(AllowLocalStubs)' == ''">false</AllowLocalStubs>
 
+    <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('C:/Steam/steamapps/common/ROUNDS')">C:/Steam/steamapps/common/ROUNDS</RoundsFolder>
     <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('C:/Program Files (x86)/Steam/steamapps/common/ROUNDS')">C:/Program Files (x86)/Steam/steamapps/common/ROUNDS</RoundsFolder>
     <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('C:/Program Files/Steam/steamapps/common/ROUNDS')">C:/Program Files/Steam/steamapps/common/ROUNDS</RoundsFolder>
+    <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('D:/Steam/steamapps/common/ROUNDS')">D:/Steam/steamapps/common/ROUNDS</RoundsFolder>
+    <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('/mnt/c/Steam/steamapps/common/ROUNDS')">/mnt/c/Steam/steamapps/common/ROUNDS</RoundsFolder>
     <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('/mnt/c/Program Files (x86)/Steam/steamapps/common/ROUNDS')">/mnt/c/Program Files (x86)/Steam/steamapps/common/ROUNDS</RoundsFolder>
     <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('/mnt/c/Program Files/Steam/steamapps/common/ROUNDS')">/mnt/c/Program Files/Steam/steamapps/common/ROUNDS</RoundsFolder>
   </PropertyGroup>
