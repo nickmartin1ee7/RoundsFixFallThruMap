@@ -4,3 +4,6 @@ obj/
 *.user
 *.suo
 *.csproj.user
+
+artifacts/
+artifacts/*.zip
