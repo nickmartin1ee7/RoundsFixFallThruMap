@@ -8,6 +8,7 @@
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AllowLocalStubs Condition="'$(AllowLocalStubs)' == ''">false</AllowLocalStubs>
 
     <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('C:/Program Files (x86)/Steam/steamapps/common/ROUNDS')">C:/Program Files (x86)/Steam/steamapps/common/ROUNDS</RoundsFolder>
     <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('C:/Program Files/Steam/steamapps/common/ROUNDS')">C:/Program Files/Steam/steamapps/common/ROUNDS</RoundsFolder>
@@ -15,7 +16,12 @@
     <RoundsFolder Condition="'$(RoundsFolder)' == '' and Exists('/mnt/c/Program Files/Steam/steamapps/common/ROUNDS')">/mnt/c/Program Files/Steam/steamapps/common/ROUNDS</RoundsFolder>
   </PropertyGroup>
 
-  <ItemGroup Condition="Exists('$(RoundsFolder)/BepInEx/core/BepInEx.dll')">
+  <Target Name="ValidateRoundsFolder" BeforeTargets="BeforeBuild">
+    <Error Condition="'$(RoundsFolder)' == '' and '$(AllowLocalStubs)' != 'true'"
+           Text="ROUNDS install not found. Set RoundsFolder or build with -p:AllowLocalStubs=true for local-only stub validation." />
+  </Target>
+
+  <ItemGroup Condition="'$(RoundsFolder)' != '' and Exists('$(RoundsFolder)/BepInEx/core/BepInEx.dll')">
     <Reference Include="BepInEx">
       <HintPath>$(RoundsFolder)/BepInEx/core/BepInEx.dll</HintPath>
     </Reference>
@@ -46,7 +52,7 @@
     <Compile Include="RoundsFixFallThruMap.cs" />
   </ItemGroup>
 
-  <ItemGroup Condition="!Exists('$(RoundsFolder)/BepInEx/core/BepInEx.dll')">
+  <ItemGroup Condition="'$(AllowLocalStubs)' == 'true' and '$(RoundsFolder)' == ''">
     <Compile Include="Stubs.cs" />
   </ItemGroup>
 </Project>

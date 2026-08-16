@@ -19,10 +19,18 @@ It fixes the case where a player has a few maps disabled locally, joins a friend
 
 ## Build
 
-Edit the `RoundsFolder` path in `RoundsFixFallThruMap.csproj` to match your local ROUNDS install, then run:
+For a normal release build, point `RoundsFolder` in `RoundsFixFallThruMap.csproj` at your local ROUNDS install and run:
 
 ```powershell
 dotnet build .\RoundsFixFallThruMap.csproj
+```
+
+The project deliberately fails fast without a real ROUNDS install so the mod is compiled against the actual BepInEx/UnboundLib API surface instead of fake stubs.
+
+For local-only validation in a non-game environment, build with the stub opt-in:
+
+```powershell
+dotnet build .\RoundsFixFallThruMap.csproj -p:AllowLocalStubs=true
 ```
 
 The output DLL is placed in the project output directory and can be copied to the plugin folder.

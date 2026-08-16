@@ -17,6 +17,20 @@ namespace BepInEx
         public BepInProcessAttribute(string processName) { }
     }
 
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+    public sealed class BepInDependency : Attribute
+    {
+        public BepInDependency(string dependency, DependencyFlags flags = DependencyFlags.HardDependency)
+        {
+        }
+
+        public enum DependencyFlags
+        {
+            HardDependency = 0,
+            SoftDependency = 1,
+        }
+    }
+
     public class BaseUnityPlugin
     {
         public BepInEx.Logging.Logger Logger => new BepInEx.Logging.Logger();
@@ -79,6 +93,10 @@ namespace UnboundLib.Utils
     {
         public static SortedDictionary<string, Level> levels = new SortedDictionary<string, Level>();
         public static ObservableCollection<string> activeLevels = new ObservableCollection<string>();
+
+        public static void RPC_HostMapHandshakeResponse(string[] levels)
+        {
+        }
 
         public static bool IsLevelActive(string levelName) => activeLevels.Contains(levelName);
 

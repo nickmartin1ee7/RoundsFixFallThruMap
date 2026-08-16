@@ -8,6 +8,7 @@ using UnboundLib.Utils.UI;
 
 namespace RoundsFixFallThruMap
 {
+    [BepInDependency("com.willis.rounds.unbound", BepInDependency.DependencyFlags.HardDependency)]
     [BepInPlugin(ModId, ModName, Version)]
     [BepInProcess("Rounds.exe")]
     public class RoundsFixFallThruMap : BaseUnityPlugin
@@ -23,14 +24,13 @@ namespace RoundsFixFallThruMap
         }
     }
 
-    [HarmonyPatch]
+    [HarmonyPatch(typeof(LevelManager), nameof(LevelManager.RPC_HostMapHandshakeResponse))]
     internal static class MapSyncPatch
     {
         [HarmonyPostfix]
-        [HarmonyPatch(typeof(LevelManager), "RPC_HostMapHandshakeResponse")]
         private static void ReEnableMapsAllowedByHost(string[] levels)
         {
-            if (levels == null || PhotonNetwork.IsMasterClient)
+            if (levels == null || PhotonNetwork.IsMasterClient || LevelManager.levels == null)
             {
                 return;
             }
