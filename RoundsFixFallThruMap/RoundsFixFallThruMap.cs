@@ -17,7 +17,7 @@ namespace RoundsFixFallThruMap
     {
         private const string ModId = "com.github.nickmartin1ee7.roundsfixfallthrumap";
         private const string ModName = "Rounds Fix Fall Thru Map";
-        private const string Version = "1.0.4";
+        private const string Version = "1.0.0";
 
         private void Awake()
         {
