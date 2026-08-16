@@ -1,6 +1,6 @@
 {
   "name": "FixFallThruMap",
-  "version_number": "1.0.0",
+  "version_number": "1.0.2",
   "website_url": "https://github.com/nickmartin1ee7/RoundsFixFallThruMap",
   "description": "Fixes client fall-through of maps by re-enabling maps the host has enabled when joining a friend's game.",
   "dependencies": [
