@@ -1,0 +1,9 @@
+{
+  "Name": "RoundsFixFallThruMap",
+  "Version": "0.1.0",
+  "Author": "nick",
+  "Description": "Fixes client fall-through of maps by re-enabling maps the host has enabled when joining a friend's game.",
+  "Repository": "https://github.com/olavim/RoundsWithFriends",
+  "Tags": ["rounds","unboundlib","bepinex","maps","fix"],
+  "UniqueId": "com.nick.roundsfixfallthrumap"
+}

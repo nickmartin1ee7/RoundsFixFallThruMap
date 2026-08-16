@@ -95,6 +95,9 @@ OUT_NAME="RoundsFixFallThruMap-${TIMESTAMP}.zip"
 TMP_DIR=$(mktemp -d)
 cp "$DLL_SRC" "$TMP_DIR/"
 cp "$REPO_ROOT/README.md" "$TMP_DIR/"
+if [[ -f "$REPO_ROOT/manifest.json" ]]; then
+  cp "$REPO_ROOT/manifest.json" "$TMP_DIR/"
+fi
 
 pushd "$TMP_DIR" >/dev/null
 zip -r "$ARTIFACTS_DIR/$OUT_NAME" . >/dev/null
