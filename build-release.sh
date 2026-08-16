@@ -11,7 +11,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$SCRIPT_DIR"
 PROJECT_SLN="$REPO_ROOT/RoundsFixFallThruMap.slnx"
-PROJECT_DLL_REL="RoundsFixFallThruMap/RoundsFixFallThruMap/bin/Release/netstandard2.1/RoundsFixFallThruMap.dll"
+PROJECT_DLL_REL="RoundsFixFallThruMap/bin/Release/netstandard2.1/RoundsFixFallThruMap.dll"
 ARTIFACTS_DIR="$REPO_ROOT/artifacts"
 
 # CLI args
